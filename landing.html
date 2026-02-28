@@ -1,0 +1,1551 @@
+<!doctype html>
+<html lang="en" class="h-full">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Luxe Salon India - Premium Hair &amp; Beauty Services</title>
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <script src="/_sdk/element_sdk.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&amp;family=Poppins:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            cream: '#FFFFFF',
+            gold: '#A0001E',
+            'gold-light': '#D9D9D9',
+            'gold-dark': '#700014',
+            charcoal: '#000000',
+            'warm-gray': '#595959'
+          },
+          fontFamily: {
+            'display': ['Playfair Display', 'serif'],
+            'sans': ['Poppins', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    html, body { height: 100%; }
+    .page { display: none; }
+    .page.active { display: block; }
+    
+    /* Smooth animations */
+    .fade-in {
+      animation: fadeIn 0.6s ease-out forwards;
+    }
+    
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    .slide-up {
+      animation: slideUp 0.5s ease-out forwards;
+    }
+    
+    @keyframes slideUp {
+      from { opacity: 0; transform: translateY(40px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    /* Stagger animations */
+    .stagger-1 { animation-delay: 0.1s; opacity: 0; }
+    .stagger-2 { animation-delay: 0.2s; opacity: 0; }
+    .stagger-3 { animation-delay: 0.3s; opacity: 0; }
+    .stagger-4 { animation-delay: 0.4s; opacity: 0; }
+    .stagger-5 { animation-delay: 0.5s; opacity: 0; }
+    
+    /* Custom scrollbar */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: #FAF8F5; }
+    ::-webkit-scrollbar-thumb { background: #C9A962; border-radius: 3px; }
+    
+    /* Testimonial carousel */
+    .testimonial-track {
+      display: flex;
+      transition: transform 0.5s ease;
+    }
+    
+    /* Before/After slider */
+    .ba-slider {
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .ba-slider .before-img,
+    .ba-slider .after-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    
+    /* Calendar styling */
+    .calendar-day {
+      transition: all 0.2s ease;
+    }
+    
+    .calendar-day:hover:not(.disabled) {
+      background: #C9A962;
+      color: white;
+    }
+    
+    .calendar-day.selected {
+      background: #C9A962;
+      color: white;
+    }
+    
+    .calendar-day.disabled {
+      color: #ccc;
+      cursor: not-allowed;
+    }
+    
+    /* Time slot styling */
+    .time-slot {
+      transition: all 0.2s ease;
+    }
+    
+    .time-slot:hover {
+      border-color: #C9A962;
+      background: #FAF8F5;
+    }
+    
+    .time-slot.selected {
+      background: #C9A962;
+      color: white;
+      border-color: #C9A962;
+    }
+    
+    /* Service card hover */
+    .service-card {
+      transition: all 0.3s ease;
+    }
+    
+    .service-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+    }
+    
+    /* Membership card glow */
+    .membership-card {
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .membership-card::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: linear-gradient(45deg, transparent, rgba(201, 169, 98, 0.1), transparent);
+      transform: rotate(45deg);
+      animation: shimmer 3s infinite;
+    }
+    
+    @keyframes shimmer {
+      0% { transform: translateX(-100%) rotate(45deg); }
+      100% { transform: translateX(100%) rotate(45deg); }
+    }
+    
+    /* WhatsApp floating button */
+    .whatsapp-btn {
+      animation: pulse 2s infinite;
+    }
+    
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+    }
+  </style>
+  <style>body { box-sizing: border-box; }</style>
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+ </head>
+ <body class="h-full bg-cream font-sans text-charcoal overflow-x-hidden"><!-- Navigation -->
+  <nav id="main-nav" class="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md border-b border-gold-light/30 transition-all duration-300">
+   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between h-16 lg:h-20"><!-- Logo -->
+     <div class="flex items-center space-x-2 cursor-pointer" onclick="showPage('home')">
+      <div class="w-10 h-10 lg:w-12 lg:h-12 rounded-full bg-gradient-to-br from-gold to-gold-dark flex items-center justify-center">
+       <svg class="w-6 h-6 lg:w-7 lg:h-7 text-white" fill="currentColor" viewbox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" />
+       </svg>
+      </div><span id="nav-brand-name" class="font-display text-xl lg:text-2xl font-semibold text-charcoal">Luxe Salon</span>
+     </div><!-- Desktop Navigation -->
+     <div class="hidden lg:flex items-center space-x-8"><a href="#" onclick="showPage('home'); return false;" class="nav-link text-sm font-medium text-warm-gray hover:text-gold transition-colors">Home</a> <a href="#" onclick="showPage('booking'); return false;" class="nav-link text-sm font-medium text-warm-gray hover:text-gold transition-colors">Book Now</a> <a href="#" onclick="showPage('offers'); return false;" class="nav-link text-sm font-medium text-warm-gray hover:text-gold transition-colors">Offers</a> <a href="#services" class="nav-link text-sm font-medium text-warm-gray hover:text-gold transition-colors">Services</a> <a href="#locations" class="nav-link text-sm font-medium text-warm-gray hover:text-gold transition-colors">Locations</a>
+     </div><!-- CTA Button -->
+     <div class="flex items-center space-x-4"><button onclick="showPage('booking')" class="hidden sm:block px-6 py-2.5 bg-charcoal text-white text-sm font-medium rounded-full hover:bg-gold transition-all duration-300"> Book Appointment </button> <!-- Mobile Menu Button --> <button id="mobile-menu-btn" class="lg:hidden p-2" onclick="toggleMobileMenu()">
+       <svg class="w-6 h-6" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+       </svg></button>
+     </div>
+    </div>
+   </div><!-- Mobile Menu -->
+   <div id="mobile-menu" class="lg:hidden hidden bg-white border-t border-gold-light/30">
+    <div class="px-4 py-4 space-y-3"><a href="#" onclick="showPage('home'); toggleMobileMenu(); return false;" class="block py-2 text-charcoal font-medium">Home</a> <a href="#" onclick="showPage('booking'); toggleMobileMenu(); return false;" class="block py-2 text-charcoal font-medium">Book Now</a> <a href="#" onclick="showPage('offers'); toggleMobileMenu(); return false;" class="block py-2 text-charcoal font-medium">Offers &amp; Membership</a> <a href="#services" class="block py-2 text-charcoal font-medium">Services</a> <a href="#locations" class="block py-2 text-charcoal font-medium">Find Salon</a>
+    </div>
+   </div>
+  </nav><!-- ==================== HOMEPAGE ==================== -->
+  <div id="page-home" class="page active"><!-- Hero Section -->
+   <section class="relative min-h-screen pt-16 lg:pt-20"><!-- First-Time Offer Banner -->
+    <div id="first-time-offer" class="absolute top-0 left-0 right-0 z-40 bg-gradient-to-r from-gold/90 to-gold-dark/90 backdrop-blur-md py-3 px-4 text-center hidden">
+     <div class="max-w-7xl mx-auto flex items-center justify-between">
+      <div class="flex-1">
+       <p class="text-white font-semibold text-sm lg:text-base">✨ <span id="offer-text">Get 20% off on your first booking</span></p>
+      </div><button onclick="closeFTOBanner()" class="text-white/70 hover:text-white transition-colors">
+       <svg class="w-5 h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+       </svg></button>
+     </div>
+    </div><!-- Background Pattern -->
+    <div class="absolute inset-0 bg-gradient-to-b from-cream via-white to-cream"></div>
+    <div class="absolute top-0 right-0 w-1/2 h-full opacity-5">
+     <svg viewbox="0 0 200 200" class="w-full h-full"><defs>
+       <pattern id="hero-pattern" x="0" y="0" width="40" height="40" patternunits="userSpaceOnUse">
+        <circle cx="20" cy="20" r="2" fill="#C9A962" />
+       </pattern>
+      </defs> <rect width="100%" height="100%" fill="url(#hero-pattern)" />
+     </svg>
+    </div>
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-20">
+     <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center min-h-[calc(100vh-10rem)]"><!-- Hero Content -->
+      <div class="text-center lg:text-left order-2 lg:order-1">
+       <div class="fade-in stagger-1"><span class="inline-block px-4 py-1.5 bg-gold/10 text-gold text-sm font-medium rounded-full mb-6"> ✨ India's Most Trusted Salon Chain </span>
+       </div>
+       <h1 id="hero-headline" class="fade-in stagger-2 font-display text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold text-charcoal leading-tight mb-6">Experience <span class="text-gold">Premium</span> Hair &amp; Beauty Services</h1>
+       <p id="hero-subheading" class="fade-in stagger-3 text-lg sm:text-xl text-warm-gray max-w-xl mx-auto lg:mx-0 mb-8 leading-relaxed">Expert stylists. Trusted by millions. 1000+ locations nationwide. Your transformation begins here.</p><!-- Trust Badges -->
+       <div class="fade-in stagger-4 flex flex-wrap justify-center lg:justify-start gap-6 mb-10">
+        <div class="flex items-center space-x-2">
+         <div class="w-10 h-10 rounded-full bg-gold/10 flex items-center justify-center">
+          <svg class="w-5 h-5 text-gold" fill="currentColor" viewbox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z" />
+          </svg>
+         </div>
+         <div class="text-left">
+          <div class="text-sm font-semibold text-charcoal">
+           1000+
+          </div>
+          <div class="text-xs text-warm-gray">
+           Locations
+          </div>
+         </div>
+        </div>
+        <div class="flex items-center space-x-2">
+         <div class="w-10 h-10 rounded-full bg-gold/10 flex items-center justify-center">
+          <svg class="w-5 h-5 text-gold" fill="currentColor" viewbox="0 0 24 24"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5z" />
+          </svg>
+         </div>
+         <div class="text-left">
+          <div class="text-sm font-semibold text-charcoal">
+           5Cr+
+          </div>
+          <div class="text-xs text-warm-gray">
+           Happy Customers
+          </div>
+         </div>
+        </div>
+       </div><!-- CTA Buttons -->
+       <div class="fade-in stagger-5 flex flex-col sm:flex-row gap-4 justify-center lg:justify-start"><button id="hero-primary-cta" onclick="showPage('booking')" class="group px-8 py-4 bg-charcoal text-white text-base font-semibold rounded-full hover:bg-gold transition-all duration-300 shadow-lg hover:shadow-xl flex items-center justify-center space-x-2"> <span>Book Appointment</span>
+         <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+         </svg></button> <button id="quick-book-btn" onclick="showQuickBook()" class="px-8 py-4 bg-white text-charcoal text-base font-semibold rounded-full border-2 border-charcoal/20 hover:border-gold hover:text-gold transition-all duration-300 flex items-center justify-center space-x-2">
+         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+         </svg><span>Book in 10 Seconds</span> </button>
+       </div>
+      </div><!-- Hero Image -->
+      <div class="order-1 lg:order-2 relative">
+       <div class="relative"><!-- Main Image Container -->
+        <div class="relative rounded-3xl overflow-hidden shadow-2xl"><!-- Salon Interior SVG Illustration -->
+         <div class="aspect-[4/5] lg:aspect-[3/4] bg-gradient-to-br from-gold-light/30 via-cream to-white relative"><!-- Decorative elements -->
+          <svg class="absolute inset-0 w-full h-full" viewbox="0 0 400 500" fill="none"><!-- Background shapes --> <rect x="50" y="80" width="300" height="340" rx="20" fill="#FAF8F5" stroke="#C9A962" stroke-width="2" /> <!-- Mirror --> <ellipse cx="200" cy="200" rx="80" ry="100" fill="white" stroke="#E8D5A3" stroke-width="3" /> <ellipse cx="200" cy="200" rx="70" ry="90" fill="#FAF8F5" /> <!-- Salon chair --> <rect x="140" y="320" width="120" height="80" rx="10" fill="#2D2D2D" /> <rect x="150" y="280" width="100" height="50" rx="8" fill="#3D3D3D" /> <rect x="170" y="400" width="60" height="20" rx="4" fill="#1D1D1D" /> <!-- Styling tools --> <rect x="80" y="150" width="30" height="8" rx="4" fill="#C9A962" /> <rect x="80" y="165" width="25" height="6" rx="3" fill="#A88B3D" /> <rect x="80" y="178" width="28" height="7" rx="3" fill="#E8D5A3" /> <!-- Products shelf --> <rect x="290" y="140" width="60" height="120" rx="6" fill="#FAF8F5" stroke="#E8D5A3" stroke-width="2" /> <rect x="300" y="155" width="15" height="30" rx="4" fill="#C9A962" /> <rect x="320" y="160" width="12" height="25" rx="3" fill="#A88B3D" /> <rect x="300" y="195" width="18" height="28" rx="4" fill="#E8D5A3" /> <rect x="322" y="198" width="14" height="22" rx="3" fill="#C9A962" /> <!-- Decorative plant --> <ellipse cx="330" cy="350" rx="25" ry="30" fill="#4A7C59" /> <ellipse cx="340" cy="340" rx="15" ry="20" fill="#5D9970" /> <rect x="325" y="375" width="12" height="25" rx="2" fill="#A88B3D" /> <!-- Stylist figure --> <circle cx="200" cy="250" r="25" fill="#E8D5A3" /> <ellipse cx="200" cy="235" rx="12" ry="14" fill="#2D2D2D" /> <rect x="175" y="275" width="50" height="60" rx="10" fill="#2D2D2D" /> <!-- Sparkles --> <circle cx="120" cy="120" r="4" fill="#C9A962" /> <circle cx="280" cy="100" r="3" fill="#E8D5A3" /> <circle cx="100" cy="300" r="3" fill="#C9A962" /> <circle cx="310" cy="280" r="4" fill="#E8D5A3" />
+          </svg><!-- Overlay gradient -->
+          <div class="absolute inset-0 bg-gradient-to-t from-charcoal/20 via-transparent to-transparent"></div>
+         </div>
+        </div><!-- Floating Elements -->
+        <div class="absolute -top-4 -right-4 lg:-top-6 lg:-right-6 w-24 h-24 lg:w-32 lg:h-32 bg-gold rounded-full flex items-center justify-center shadow-lg">
+         <div class="text-center text-white">
+          <div class="text-2xl lg:text-3xl font-bold">
+           25+
+          </div>
+          <div class="text-xs lg:text-sm">
+           Years
+          </div>
+         </div>
+        </div>
+        <div class="absolute -bottom-4 -left-4 lg:-bottom-6 lg:-left-6 bg-white rounded-2xl p-4 shadow-xl">
+         <div class="flex items-center space-x-3">
+          <div class="flex -space-x-2">
+           <div class="w-8 h-8 rounded-full bg-gold-light flex items-center justify-center text-xs font-bold text-charcoal">
+            A
+           </div>
+           <div class="w-8 h-8 rounded-full bg-gold flex items-center justify-center text-xs font-bold text-white">
+            P
+           </div>
+           <div class="w-8 h-8 rounded-full bg-charcoal flex items-center justify-center text-xs font-bold text-white">
+            R
+           </div>
+          </div>
+          <div>
+           <div class="text-sm font-semibold text-charcoal">
+            10,000+
+           </div>
+           <div class="text-xs text-warm-gray">
+            Expert Stylists
+           </div>
+          </div>
+         </div>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div><!-- Scroll Indicator -->
+    <div class="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce hidden lg:block">
+     <div class="w-6 h-10 border-2 border-gold/50 rounded-full flex items-start justify-center p-1">
+      <div class="w-1.5 h-3 bg-gold rounded-full animate-pulse"></div>
+     </div>
+    </div>
+   </section><!-- Services Preview Section -->
+   <section id="services" class="py-16 lg:py-24 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+     <div class="text-center mb-12 lg:mb-16"><span class="inline-block px-4 py-1.5 bg-gold/10 text-gold text-sm font-medium rounded-full mb-4"> Our Services </span>
+      <h2 class="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-charcoal mb-4">Premium Services for You</h2>
+      <p class="text-warm-gray text-lg max-w-2xl mx-auto">From classic cuts to complete transformations, we offer world-class services tailored to your unique style.</p>
+     </div>
+     <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 lg:gap-6"><!-- Haircut -->
+      <div class="service-card bg-cream rounded-2xl p-6 text-center cursor-pointer group" onclick="selectServiceAndBook('haircut')">
+       <div class="w-16 h-16 mx-auto mb-4 rounded-full bg-white shadow-md flex items-center justify-center group-hover:bg-gold transition-colors">
+        <svg class="w-8 h-8 text-gold group-hover:text-white transition-colors" fill="currentColor" viewbox="0 0 24 24"><path d="M9.64 7.64c.23-.5.36-1.05.36-1.64 0-2.21-1.79-4-4-4S2 3.79 2 6s1.79 4 4 4c.59 0 1.14-.13 1.64-.36L10 12l-2.36 2.36C7.14 14.13 6.59 14 6 14c-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4c0-.59-.13-1.14-.36-1.64L12 14l7 7h3v-1L9.64 7.64zM6 8c-1.1 0-2-.89-2-2s.9-2 2-2 2 .89 2 2-.9 2-2 2zm0 12c-1.1 0-2-.89-2-2s.9-2 2-2 2 .89 2 2-.9 2-2 2zm6-7.5c-.28 0-.5-.22-.5-.5s.22-.5.5-.5.5.22.5.5-.22.5-.5.5zM19 3l-6 6 2 2 7-7V3h-3z" />
+        </svg>
+       </div>
+       <h3 class="font-semibold text-charcoal mb-1">Haircut</h3>
+       <p class="text-sm text-warm-gray">From ₹299</p>
+      </div><!-- Hair Spa -->
+      <div class="service-card bg-cream rounded-2xl p-6 text-center cursor-pointer group" onclick="selectServiceAndBook('hair-spa')">
+       <div class="w-16 h-16 mx-auto mb-4 rounded-full bg-white shadow-md flex items-center justify-center group-hover:bg-gold transition-colors">
+        <svg class="w-8 h-8 text-gold group-hover:text-white transition-colors" fill="currentColor" viewbox="0 0 24 24"><path d="M12 3c-4.97 0-9 4.03-9 9v7c0 1.1.9 2 2 2h4v-8H5v-1c0-3.87 3.13-7 7-7s7 3.13 7 7v1h-4v8h4c1.1 0 2-.9 2-2v-7c0-4.97-4.03-9-9-9z" />
+        </svg>
+       </div>
+       <h3 class="font-semibold text-charcoal mb-1">Hair Spa</h3>
+       <p class="text-sm text-warm-gray">From ₹799</p>
+      </div><!-- Hair Color -->
+      <div class="service-card bg-cream rounded-2xl p-6 text-center cursor-pointer group" onclick="selectServiceAndBook('coloring')">
+       <div class="w-16 h-16 mx-auto mb-4 rounded-full bg-white shadow-md flex items-center justify-center group-hover:bg-gold transition-colors">
+        <svg class="w-8 h-8 text-gold group-hover:text-white transition-colors" fill="currentColor" viewbox="0 0 24 24"><path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9c.83 0 1.5-.67 1.5-1.5 0-.39-.15-.74-.39-1.01-.23-.26-.38-.61-.38-.99 0-.83.67-1.5 1.5-1.5H16c2.76 0 5-2.24 5-5 0-4.42-4.03-8-9-8zm-5.5 9c-.83 0-1.5-.67-1.5-1.5S5.67 9 6.5 9 8 9.67 8 10.5 7.33 12 6.5 12zm3-4C8.67 8 8 7.33 8 6.5S8.67 5 9.5 5s1.5.67 1.5 1.5S10.33 8 9.5 8zm5 0c-.83 0-1.5-.67-1.5-1.5S13.67 5 14.5 5s1.5.67 1.5 1.5S15.33 8 14.5 8zm3 4c-.83 0-1.5-.67-1.5-1.5S16.67 9 17.5 9s1.5.67 1.5 1.5-.67 1.5-1.5 1.5z" />
+        </svg>
+       </div>
+       <h3 class="font-semibold text-charcoal mb-1">Coloring</h3>
+       <p class="text-sm text-warm-gray">From ₹1499</p>
+      </div><!-- Bridal -->
+      <div class="service-card bg-cream rounded-2xl p-6 text-center cursor-pointer group" onclick="selectServiceAndBook('bridal')">
+       <div class="w-16 h-16 mx-auto mb-4 rounded-full bg-white shadow-md flex items-center justify-center group-hover:bg-gold transition-colors">
+        <svg class="w-8 h-8 text-gold group-hover:text-white transition-colors" fill="currentColor" viewbox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" />
+        </svg>
+       </div>
+       <h3 class="font-semibold text-charcoal mb-1">Bridal</h3>
+       <p class="text-sm text-warm-gray">From ₹15,000</p>
+      </div><!-- Grooming -->
+      <div class="service-card bg-cream rounded-2xl p-6 text-center cursor-pointer group" onclick="selectServiceAndBook('grooming')">
+       <div class="w-16 h-16 mx-auto mb-4 rounded-full bg-white shadow-md flex items-center justify-center group-hover:bg-gold transition-colors">
+        <svg class="w-8 h-8 text-gold group-hover:text-white transition-colors" fill="currentColor" viewbox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
+        </svg>
+       </div>
+       <h3 class="font-semibold text-charcoal mb-1">Grooming</h3>
+       <p class="text-sm text-warm-gray">From ₹499</p>
+      </div>
+     </div>
+     <div class="text-center mt-10"><button onclick="showPage('booking')" class="px-8 py-3 bg-charcoal text-white font-medium rounded-full hover:bg-gold transition-colors"> View All Services </button>
+     </div>
+    </div>
+   </section><!-- Why Choose Us Section -->
+   <section class="py-16 lg:py-24 bg-cream">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+     <div class="text-center mb-12 lg:mb-16"><span class="inline-block px-4 py-1.5 bg-gold/10 text-gold text-sm font-medium rounded-full mb-4"> Why Luxe Salon </span>
+      <h2 class="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-charcoal mb-4">The Luxe Difference</h2>
+     </div>
+     <div class="grid md:grid-cols-3 gap-8"><!-- Certified Professionals -->
+      <div class="bg-white rounded-3xl p-8 text-center shadow-lg hover:shadow-xl transition-shadow">
+       <div class="w-20 h-20 mx-auto mb-6 rounded-full bg-gradient-to-br from-gold/20 to-gold/5 flex items-center justify-center">
+        <svg class="w-10 h-10 text-gold" fill="currentColor" viewbox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z" />
+        </svg>
+       </div>
+       <h3 class="font-display text-xl font-bold text-charcoal mb-3">Certified Professionals</h3>
+       <p class="text-warm-gray leading-relaxed">All our stylists undergo rigorous training at Luxe Academy and are certified in the latest techniques and trends.</p>
+      </div><!-- 1000+ Locations -->
+      <div class="bg-white rounded-3xl p-8 text-center shadow-lg hover:shadow-xl transition-shadow">
+       <div class="w-20 h-20 mx-auto mb-6 rounded-full bg-gradient-to-br from-gold/20 to-gold/5 flex items-center justify-center">
+        <svg class="w-10 h-10 text-gold" fill="currentColor" viewbox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
+        </svg>
+       </div>
+       <h3 class="font-display text-xl font-bold text-charcoal mb-3">1000+ Locations</h3>
+       <p class="text-warm-gray leading-relaxed">From metros to tier-2 cities, find a Luxe Salon near you. Same quality, same experience, everywhere.</p>
+      </div><!-- Premium Products -->
+      <div class="bg-white rounded-3xl p-8 text-center shadow-lg hover:shadow-xl transition-shadow">
+       <div class="w-20 h-20 mx-auto mb-6 rounded-full bg-gradient-to-br from-gold/20 to-gold/5 flex items-center justify-center">
+        <svg class="w-10 h-10 text-gold" fill="currentColor" viewbox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+        </svg>
+       </div>
+       <h3 class="font-display text-xl font-bold text-charcoal mb-3">Premium Products</h3>
+       <p class="text-warm-gray leading-relaxed">We use only the finest international and professional-grade products for all our services.</p>
+      </div>
+     </div>
+    </div>
+   </section><!-- Testimonials Section -->
+   <section class="py-16 lg:py-24 bg-white overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+     <div class="text-center mb-12 lg:mb-16"><span class="inline-block px-4 py-1.5 bg-gold/10 text-gold text-sm font-medium rounded-full mb-4"> Testimonials </span>
+      <h2 class="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-charcoal mb-4">Loved by Millions</h2>
+     </div>
+     <div class="relative">
+      <div class="overflow-hidden">
+       <div id="testimonial-track" class="testimonial-track"><!-- Testimonial 1 -->
+        <div class="min-w-full md:min-w-[50%] lg:min-w-[33.333%] px-3">
+         <div class="bg-cream rounded-2xl p-6 lg:p-8 h-full">
+          <div class="flex items-center space-x-1 mb-4">
+           <svg class="w-5 h-5 text-gold" fill="currentColor" viewbox="0 0 24 24">
+            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+           </svg>
+           <svg class="w-5 h-5 text-gold" fill="currentColor" viewbox="0 0 24 24">
+            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+           </svg>
+           <svg class="w-5 h-5 text-gold" fill="currentColor" viewbox="0 0 24 24">
+            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+           </svg>
+           <svg class="w-5 h-5 text-gold" fill="currentColor" viewbox="0 0 24 24">
+            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+           </svg>
+           <svg class="w-5 h-5 text-gold" fill="currentColor" viewbox="0 0 24 24">
+            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+           </svg>
+          </div>
+          <p class="text-charcoal mb-6 leading-relaxed">"Best salon experience ever! The stylist understood exactly what I wanted. My hair looks amazing and the spa was so relaxing."</p>
+          <div class="flex items-center space-x-3">
+           <div class="w-12 h-12 rounded-full bg-gold-light flex items-center justify-center text-lg font-bold text-charcoal">
+            P
+           </div>
+           <div>
+            <div class="font-semibold text-charcoal">
+             Priya Sharma
+            </div>
+            <div class="text-sm text-warm-gray">
+             Mumbai
+            </div>
+           </div>
+          </div>
+         </div>
+        </div><!-- Testimonial 2 -->
+        <div class="min-w-full md:min-w-[50%] lg:min-w-[33.333%] px-3">
+         <div class="bg-cream rounded-2xl p-6 lg:p-8 h-full">
+          <div class="flex items-center space-x-1 mb-4">
+           <svg class="w-5 h-5 text-gold" fill="currentColor" viewbox="0 0 24 24">
+            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+           </svg>
+           <svg class="w-5 h-5 text-gold" fill="currentColor" viewbox="0 0 24 24">
+            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+           </svg>
+           <svg class="w-5 h-5 text-gold" fill="currentColor" viewbox="0 0 24 24">
+            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+           </svg>
+           <svg class="w-5 h-5 text-gold" fill="currentColor" viewbox="0 0 24 24">
+            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+           </svg>
+           <svg class="w-5 h-5 text-gold" fill="currentColor" viewbox="0 0 24 24">
+            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+           </svg>
+          </div>
+          <p class="text-charcoal mb-6 leading-relaxed">"I've been coming here for 3 years. Consistent quality across locations. The online booking is super convenient!"</p>
+          <div class="flex items-center space-x-3">
+           <div class="w-12 h-12 rounded-full bg-gold flex items-center justify-center text-lg font-bold text-white">
+            R
+           </div>
+           <div>
+            <div class="font-semibold text-charcoal">
+             Rahul Verma
+            </div>
+            <div class="text-sm text-warm-gray">
+             Delhi
+            </div>
+           </div>
+          </div>
+         </div>
+        </div><!-- Testimonial 3 -->
+        <div class="min-w-full md:min-w-[50%] lg:min-w-[33.333%] px-3">
+         <div class="bg-cream rounded-2xl p-6 lg:p-8 h-full">
+          <div class="flex items-center space-x-1 mb-4">
+           <svg class="w-5 h-5 text-gold" fill="currentColor" viewbox="0 0 24 24">
+            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+           </svg>
+           <svg class="w-5 h-5 text-gold" fill="currentColor" viewbox="0 0 24 24">
+            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+           </svg>
+           <svg class="w-5 h-5 text-gold" fill="currentColor" viewbox="0 0 24 24">
+            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+           </svg>
+           <svg class="w-5 h-5 text-gold" fill="currentColor" viewbox="0 0 24 24">
+            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+           </svg>
+           <svg class="w-5 h-5 text-gold" fill="currentColor" viewbox="0 0 24 24">
+            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+           </svg>
+          </div>
+          <p class="text-charcoal mb-6 leading-relaxed">"Got my bridal makeup done here. The team was so professional and made me feel like a princess. Highly recommend!"</p>
+          <div class="flex items-center space-x-3">
+           <div class="w-12 h-12 rounded-full bg-charcoal flex items-center justify-center text-lg font-bold text-white">
+            A
+           </div>
+           <div>
+            <div class="font-semibold text-charcoal">
+             Ananya Reddy
+            </div>
+            <div class="text-sm text-warm-gray">
+             Bangalore
+            </div>
+           </div>
+          </div>
+         </div>
+        </div>
+       </div>
+      </div><!-- Navigation Dots -->
+      <div class="flex justify-center space-x-2 mt-8"><button onclick="setTestimonialSlide(0)" class="testimonial-dot w-3 h-3 rounded-full bg-gold transition-colors"></button> <button onclick="setTestimonialSlide(1)" class="testimonial-dot w-3 h-3 rounded-full bg-gold/30 transition-colors"></button> <button onclick="setTestimonialSlide(2)" class="testimonial-dot w-3 h-3 rounded-full bg-gold/30 transition-colors"></button>
+      </div>
+     </div>
+    </div>
+   </section><!-- Before & After Section -->
+   <section class="py-16 lg:py-24 bg-charcoal text-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+     <div class="text-center mb-12 lg:mb-16"><span class="inline-block px-4 py-1.5 bg-gold/20 text-gold text-sm font-medium rounded-full mb-4"> Transformations </span>
+      <h2 class="font-display text-3xl sm:text-4xl lg:text-5xl font-bold mb-4">See the Magic</h2>
+      <p class="text-white/70 text-lg max-w-2xl mx-auto">Real transformations from our salons. Your dream look is just an appointment away.</p>
+     </div>
+     <div class="grid md:grid-cols-3 gap-6"><!-- Before/After Card 1 -->
+      <div class="relative rounded-2xl overflow-hidden group cursor-pointer">
+       <div class="aspect-[3/4] bg-gradient-to-br from-gold/30 to-gold-dark/30 flex items-center justify-center">
+        <div class="text-center">
+         <div class="w-24 h-24 mx-auto mb-4 rounded-full bg-white/10 flex items-center justify-center">
+          <svg class="w-12 h-12 text-gold" fill="currentColor" viewbox="0 0 24 24"><path d="M9.64 7.64c.23-.5.36-1.05.36-1.64 0-2.21-1.79-4-4-4S2 3.79 2 6s1.79 4 4 4c.59 0 1.14-.13 1.64-.36L10 12l-2.36 2.36C7.14 14.13 6.59 14 6 14c-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4c0-.59-.13-1.14-.36-1.64L12 14l7 7h3v-1L9.64 7.64z" />
+          </svg>
+         </div>
+         <p class="text-white font-medium">Hair Transformation</p>
+         <p class="text-gold text-sm">Slide to reveal</p>
+        </div>
+       </div>
+       <div class="absolute inset-0 bg-charcoal/80 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center"><button onclick="showPage('booking')" class="px-6 py-3 bg-gold text-charcoal font-semibold rounded-full"> Book This Look </button>
+       </div>
+      </div><!-- Before/After Card 2 -->
+      <div class="relative rounded-2xl overflow-hidden group cursor-pointer">
+       <div class="aspect-[3/4] bg-gradient-to-br from-gold-light/30 to-gold/30 flex items-center justify-center">
+        <div class="text-center">
+         <div class="w-24 h-24 mx-auto mb-4 rounded-full bg-white/10 flex items-center justify-center">
+          <svg class="w-12 h-12 text-gold" fill="currentColor" viewbox="0 0 24 24"><path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9c.83 0 1.5-.67 1.5-1.5 0-.39-.15-.74-.39-1.01-.23-.26-.38-.61-.38-.99 0-.83.67-1.5 1.5-1.5H16c2.76 0 5-2.24 5-5 0-4.42-4.03-8-9-8z" />
+          </svg>
+         </div>
+         <p class="text-white font-medium">Color Makeover</p>
+         <p class="text-gold text-sm">Slide to reveal</p>
+        </div>
+       </div>
+       <div class="absolute inset-0 bg-charcoal/80 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center"><button onclick="showPage('booking')" class="px-6 py-3 bg-gold text-charcoal font-semibold rounded-full"> Book This Look </button>
+       </div>
+      </div><!-- Before/After Card 3 -->
+      <div class="relative rounded-2xl overflow-hidden group cursor-pointer">
+       <div class="aspect-[3/4] bg-gradient-to-br from-gold-dark/30 to-gold-light/30 flex items-center justify-center">
+        <div class="text-center">
+         <div class="w-24 h-24 mx-auto mb-4 rounded-full bg-white/10 flex items-center justify-center">
+          <svg class="w-12 h-12 text-gold" fill="currentColor" viewbox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" />
+          </svg>
+         </div>
+         <p class="text-white font-medium">Bridal Beauty</p>
+         <p class="text-gold text-sm">Slide to reveal</p>
+        </div>
+       </div>
+       <div class="absolute inset-0 bg-charcoal/80 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center"><button onclick="showPage('booking')" class="px-6 py-3 bg-gold text-charcoal font-semibold rounded-full"> Book This Look </button>
+       </div>
+      </div>
+     </div>
+    </div>
+   </section><!-- Location Finder Section -->
+   <section id="locations" class="py-16 lg:py-24 bg-cream">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+     <div class="text-center mb-12"><span class="inline-block px-4 py-1.5 bg-gold/10 text-gold text-sm font-medium rounded-full mb-4"> Find Us </span>
+      <h2 class="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-charcoal mb-4">1000+ Salons Near You</h2>
+      <p class="text-warm-gray text-lg">Premium experience, wherever you are</p>
+     </div>
+     <div class="max-w-2xl mx-auto">
+      <div class="bg-white rounded-2xl p-6 shadow-lg">
+       <div class="flex flex-col sm:flex-row gap-4">
+        <div class="flex-1 relative">
+         <svg class="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-warm-gray" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" /> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+         </svg><input type="text" id="location-search" placeholder="Enter your city or area" class="w-full pl-12 pr-4 py-4 border border-gray-200 rounded-xl focus:outline-none focus:border-gold focus:ring-2 focus:ring-gold/20 transition-all">
+        </div><button onclick="searchLocations()" class="px-8 py-4 bg-charcoal text-white font-semibold rounded-xl hover:bg-gold transition-colors"> Find Salons </button>
+       </div><!-- Popular Cities -->
+       <div class="mt-6 pt-6 border-t border-gray-100">
+        <p class="text-sm text-warm-gray mb-3">Popular Cities:</p>
+        <div class="flex flex-wrap gap-2"><button onclick="setLocation('Mumbai')" class="px-4 py-2 text-sm bg-cream text-charcoal rounded-full hover:bg-gold hover:text-white transition-colors">Mumbai</button> <button onclick="setLocation('Delhi')" class="px-4 py-2 text-sm bg-cream text-charcoal rounded-full hover:bg-gold hover:text-white transition-colors">Delhi</button> <button onclick="setLocation('Bangalore')" class="px-4 py-2 text-sm bg-cream text-charcoal rounded-full hover:bg-gold hover:text-white transition-colors">Bangalore</button> <button onclick="setLocation('Chennai')" class="px-4 py-2 text-sm bg-cream text-charcoal rounded-full hover:bg-gold hover:text-white transition-colors">Chennai</button> <button onclick="setLocation('Hyderabad')" class="px-4 py-2 text-sm bg-cream text-charcoal rounded-full hover:bg-gold hover:text-white transition-colors">Hyderabad</button> <button onclick="setLocation('Pune')" class="px-4 py-2 text-sm bg-cream text-charcoal rounded-full hover:bg-gold hover:text-white transition-colors">Pune</button>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+   </section><!-- Footer -->
+   <footer class="bg-charcoal text-white py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+     <div class="grid grid-cols-2 md:grid-cols-4 gap-8 mb-12"><!-- Brand Column -->
+      <div class="col-span-2 md:col-span-1">
+       <div class="flex items-center space-x-2 mb-4">
+        <div class="w-10 h-10 rounded-full bg-gold flex items-center justify-center">
+         <svg class="w-6 h-6 text-white" fill="currentColor" viewbox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" />
+         </svg>
+        </div><span id="footer-brand-name" class="font-display text-xl font-semibold">Luxe Salon</span>
+       </div>
+       <p class="text-white/70 text-sm leading-relaxed mb-4">India's most trusted salon chain. Premium services at affordable prices.</p>
+       <div class="flex space-x-4"><a href="#" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-gold transition-colors">
+         <svg class="w-5 h-5" fill="currentColor" viewbox="0 0 24 24">
+          <path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z" />
+         </svg></a> <a href="#" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-gold transition-colors">
+         <svg class="w-5 h-5" fill="currentColor" viewbox="0 0 24 24">
+          <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073z" />
+         </svg></a> <a href="#" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-gold transition-colors">
+         <svg class="w-5 h-5" fill="currentColor" viewbox="0 0 24 24">
+          <path d="M22.675 0h-21.35c-.732 0-1.325.593-1.325 1.325v21.351c0 .731.593 1.324 1.325 1.324h11.495v-9.294h-3.128v-3.622h3.128v-2.671c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12v9.293h6.116c.73 0 1.323-.593 1.323-1.325v-21.35c0-.732-.593-1.325-1.325-1.325z" />
+         </svg></a> <a href="#" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-gold transition-colors">
+         <svg class="w-5 h-5" fill="currentColor" viewbox="0 0 24 24">
+          <path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z" />
+         </svg></a>
+       </div>
+      </div><!-- Quick Links -->
+      <div>
+       <h4 class="font-semibold mb-4">Quick Links</h4>
+       <ul class="space-y-2 text-sm text-white/70">
+        <li><a href="#" onclick="showPage('home'); return false;" class="hover:text-gold transition-colors">Home</a></li>
+        <li><a href="#services" class="hover:text-gold transition-colors">Services</a></li>
+        <li><a href="#" onclick="showPage('offers'); return false;" class="hover:text-gold transition-colors">Offers</a></li>
+        <li><a href="#locations" class="hover:text-gold transition-colors">Locations</a></li>
+        <li><a href="#" onclick="showPage('booking'); return false;" class="hover:text-gold transition-colors">Book Now</a></li>
+       </ul>
+      </div><!-- Business -->
+      <div>
+       <h4 class="font-semibold mb-4">Business</h4>
+       <ul class="space-y-2 text-sm text-white/70">
+        <li><a href="#" class="hover:text-gold transition-colors">Franchise</a></li>
+        <li><a href="#" class="hover:text-gold transition-colors">Academy</a></li>
+        <li><a href="#" class="hover:text-gold transition-colors">Careers</a></li>
+        <li><a href="#" class="hover:text-gold transition-colors">Partner With Us</a></li>
+       </ul>
+      </div><!-- Support -->
+      <div>
+       <h4 class="font-semibold mb-4">Support</h4>
+       <ul class="space-y-2 text-sm text-white/70">
+        <li><a href="#" class="hover:text-gold transition-colors">Help Center</a></li>
+        <li><a href="#" class="hover:text-gold transition-colors">Contact Us</a></li>
+        <li><a href="#" class="hover:text-gold transition-colors">Privacy Policy</a></li>
+        <li><a href="#" class="hover:text-gold transition-colors">Terms of Service</a></li>
+       </ul>
+      </div>
+     </div>
+     <div class="pt-8 border-t border-white/10 text-center text-sm text-white/50">
+      <p>© 2024 Luxe Salon India. All rights reserved.</p>
+     </div>
+    </div>
+   </footer>
+  </div><!-- ==================== BOOKING PAGE ==================== -->
+  <div id="page-booking" class="page">
+   <div class="min-h-screen pt-20 lg:pt-24 pb-32 bg-cream">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8"><!-- Booking Header -->
+     <div class="text-center mb-8 lg:mb-12"><span class="inline-block px-4 py-1.5 bg-gold/10 text-gold text-sm font-medium rounded-full mb-4"> Book Appointment </span>
+      <h1 class="font-display text-3xl sm:text-4xl font-bold text-charcoal mb-2">Schedule Your Visit</h1>
+      <p class="text-warm-gray">Book in 4 easy steps • Instant confirmation</p>
+     </div><!-- Progress Steps -->
+     <div class="mb-10">
+      <div class="flex items-center justify-between max-w-md mx-auto">
+       <div class="flex flex-col items-center">
+        <div id="step-1-indicator" class="w-10 h-10 rounded-full bg-gold text-white flex items-center justify-center font-semibold">
+         1
+        </div><span class="text-xs mt-2 text-charcoal font-medium">Service</span>
+       </div>
+       <div class="flex-1 h-1 bg-gray-200 mx-2">
+        <div id="progress-1" class="h-full bg-gold w-0 transition-all duration-300"></div>
+       </div>
+       <div class="flex flex-col items-center">
+        <div id="step-2-indicator" class="w-10 h-10 rounded-full bg-gray-200 text-warm-gray flex items-center justify-center font-semibold">
+         2
+        </div><span class="text-xs mt-2 text-warm-gray">Location</span>
+       </div>
+       <div class="flex-1 h-1 bg-gray-200 mx-2">
+        <div id="progress-2" class="h-full bg-gold w-0 transition-all duration-300"></div>
+       </div>
+       <div class="flex flex-col items-center">
+        <div id="step-3-indicator" class="w-10 h-10 rounded-full bg-gray-200 text-warm-gray flex items-center justify-center font-semibold">
+         3
+        </div><span class="text-xs mt-2 text-warm-gray">Date</span>
+       </div>
+       <div class="flex-1 h-1 bg-gray-200 mx-2">
+        <div id="progress-3" class="h-full bg-gold w-0 transition-all duration-300"></div>
+       </div>
+       <div class="flex flex-col items-center">
+        <div id="step-4-indicator" class="w-10 h-10 rounded-full bg-gray-200 text-warm-gray flex items-center justify-center font-semibold">
+         4
+        </div><span class="text-xs mt-2 text-warm-gray">Details</span>
+       </div>
+      </div>
+     </div><!-- Step 1: Select Service -->
+     <div id="booking-step-1" class="booking-step">
+      <div class="bg-white rounded-3xl p-6 lg:p-8 shadow-lg">
+       <h2 class="font-display text-xl font-bold text-charcoal mb-6">Select Service</h2>
+       <div class="grid grid-cols-2 md:grid-cols-3 gap-4"><button onclick="selectService('haircut')" class="service-option p-4 rounded-2xl border-2 border-gray-100 hover:border-gold transition-all text-center group" data-service="haircut">
+         <div class="w-14 h-14 mx-auto mb-3 rounded-full bg-cream flex items-center justify-center group-hover:bg-gold transition-colors">
+          <svg class="w-7 h-7 text-gold group-hover:text-white transition-colors" fill="currentColor" viewbox="0 0 24 24"><path d="M9.64 7.64c.23-.5.36-1.05.36-1.64 0-2.21-1.79-4-4-4S2 3.79 2 6s1.79 4 4 4c.59 0 1.14-.13 1.64-.36L10 12l-2.36 2.36C7.14 14.13 6.59 14 6 14c-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4c0-.59-.13-1.14-.36-1.64L12 14l7 7h3v-1L9.64 7.64z" />
+          </svg>
+         </div><h3 class="font-semibold text-charcoal">Haircut</h3><p class="text-sm text-warm-gray">From ₹299</p></button> <button onclick="selectService('hair-spa')" class="service-option p-4 rounded-2xl border-2 border-gray-100 hover:border-gold transition-all text-center group" data-service="hair-spa">
+         <div class="w-14 h-14 mx-auto mb-3 rounded-full bg-cream flex items-center justify-center group-hover:bg-gold transition-colors">
+          <svg class="w-7 h-7 text-gold group-hover:text-white transition-colors" fill="currentColor" viewbox="0 0 24 24"><path d="M12 3c-4.97 0-9 4.03-9 9v7c0 1.1.9 2 2 2h4v-8H5v-1c0-3.87 3.13-7 7-7s7 3.13 7 7v1h-4v8h4c1.1 0 2-.9 2-2v-7c0-4.97-4.03-9-9-9z" />
+          </svg>
+         </div><h3 class="font-semibold text-charcoal">Hair Spa</h3><p class="text-sm text-warm-gray">From ₹799</p></button> <button onclick="selectService('coloring')" class="service-option p-4 rounded-2xl border-2 border-gray-100 hover:border-gold transition-all text-center group" data-service="coloring">
+         <div class="w-14 h-14 mx-auto mb-3 rounded-full bg-cream flex items-center justify-center group-hover:bg-gold transition-colors">
+          <svg class="w-7 h-7 text-gold group-hover:text-white transition-colors" fill="currentColor" viewbox="0 0 24 24"><path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9c.83 0 1.5-.67 1.5-1.5 0-.39-.15-.74-.39-1.01-.23-.26-.38-.61-.38-.99 0-.83.67-1.5 1.5-1.5H16c2.76 0 5-2.24 5-5 0-4.42-4.03-8-9-8z" />
+          </svg>
+         </div><h3 class="font-semibold text-charcoal">Coloring</h3><p class="text-sm text-warm-gray">From ₹1499</p></button> <button onclick="selectService('bridal')" class="service-option p-4 rounded-2xl border-2 border-gray-100 hover:border-gold transition-all text-center group" data-service="bridal">
+         <div class="w-14 h-14 mx-auto mb-3 rounded-full bg-cream flex items-center justify-center group-hover:bg-gold transition-colors">
+          <svg class="w-7 h-7 text-gold group-hover:text-white transition-colors" fill="currentColor" viewbox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" />
+          </svg>
+         </div><h3 class="font-semibold text-charcoal">Bridal</h3><p class="text-sm text-warm-gray">From ₹15,000</p></button> <button onclick="selectService('grooming')" class="service-option p-4 rounded-2xl border-2 border-gray-100 hover:border-gold transition-all text-center group" data-service="grooming">
+         <div class="w-14 h-14 mx-auto mb-3 rounded-full bg-cream flex items-center justify-center group-hover:bg-gold transition-colors">
+          <svg class="w-7 h-7 text-gold group-hover:text-white transition-colors" fill="currentColor" viewbox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
+          </svg>
+         </div><h3 class="font-semibold text-charcoal">Grooming</h3><p class="text-sm text-warm-gray">From ₹499</p></button> <button onclick="selectService('facial')" class="service-option p-4 rounded-2xl border-2 border-gray-100 hover:border-gold transition-all text-center group" data-service="facial">
+         <div class="w-14 h-14 mx-auto mb-3 rounded-full bg-cream flex items-center justify-center group-hover:bg-gold transition-colors">
+          <svg class="w-7 h-7 text-gold group-hover:text-white transition-colors" fill="currentColor" viewbox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z" />
+          </svg>
+         </div><h3 class="font-semibold text-charcoal">Facial</h3><p class="text-sm text-warm-gray">From ₹699</p></button>
+       </div>
+      </div>
+     </div><!-- Step 2: Select Location -->
+     <div id="booking-step-2" class="booking-step hidden">
+      <div class="bg-white rounded-3xl p-6 lg:p-8 shadow-lg">
+       <div class="flex items-center justify-between mb-6">
+        <h2 class="font-display text-xl font-bold text-charcoal">Select Location</h2><button onclick="goToStep(1)" class="text-gold hover:text-gold-dark text-sm font-medium">← Back</button>
+       </div>
+       <div class="mb-6">
+        <div class="relative">
+         <svg class="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-warm-gray" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+         </svg><input type="text" id="booking-location-search" placeholder="Search city or area" class="w-full pl-12 pr-4 py-4 border border-gray-200 rounded-xl focus:outline-none focus:border-gold focus:ring-2 focus:ring-gold/20">
+        </div>
+       </div>
+       <div class="space-y-3 max-h-80 overflow-y-auto"><button onclick="selectLocation('Bandra West, Mumbai')" class="location-option w-full p-4 rounded-xl border-2 border-gray-100 hover:border-gold transition-all text-left flex items-center justify-between group">
+         <div>
+          <h3 class="font-semibold text-charcoal">Luxe Salon - Bandra West</h3>
+          <p class="text-sm text-warm-gray">Hill Road, Bandra West, Mumbai</p>
+         </div>
+         <div class="flex items-center space-x-2">
+          <div class="flex items-center">
+           <svg class="w-4 h-4 text-gold" fill="currentColor" viewbox="0 0 24 24">
+            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+           </svg><span class="text-sm font-medium text-charcoal ml-1">4.9</span>
+          </div>
+          <svg class="w-5 h-5 text-gray-300 group-hover:text-gold transition-colors" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+          </svg>
+         </div></button> <button onclick="selectLocation('Andheri East, Mumbai')" class="location-option w-full p-4 rounded-xl border-2 border-gray-100 hover:border-gold transition-all text-left flex items-center justify-between group">
+         <div>
+          <h3 class="font-semibold text-charcoal">Luxe Salon - Andheri East</h3>
+          <p class="text-sm text-warm-gray">MIDC, Andheri East, Mumbai</p>
+         </div>
+         <div class="flex items-center space-x-2">
+          <div class="flex items-center">
+           <svg class="w-4 h-4 text-gold" fill="currentColor" viewbox="0 0 24 24">
+            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+           </svg><span class="text-sm font-medium text-charcoal ml-1">4.8</span>
+          </div>
+          <svg class="w-5 h-5 text-gray-300 group-hover:text-gold transition-colors" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+          </svg>
+         </div></button> <button onclick="selectLocation('Connaught Place, Delhi')" class="location-option w-full p-4 rounded-xl border-2 border-gray-100 hover:border-gold transition-all text-left flex items-center justify-between group">
+         <div>
+          <h3 class="font-semibold text-charcoal">Luxe Salon - Connaught Place</h3>
+          <p class="text-sm text-warm-gray">Block M, Connaught Place, Delhi</p>
+         </div>
+         <div class="flex items-center space-x-2">
+          <div class="flex items-center">
+           <svg class="w-4 h-4 text-gold" fill="currentColor" viewbox="0 0 24 24">
+            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+           </svg><span class="text-sm font-medium text-charcoal ml-1">4.9</span>
+          </div>
+          <svg class="w-5 h-5 text-gray-300 group-hover:text-gold transition-colors" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+          </svg>
+         </div></button> <button onclick="selectLocation('Koramangala, Bangalore')" class="location-option w-full p-4 rounded-xl border-2 border-gray-100 hover:border-gold transition-all text-left flex items-center justify-between group">
+         <div>
+          <h3 class="font-semibold text-charcoal">Luxe Salon - Koramangala</h3>
+          <p class="text-sm text-warm-gray">5th Block, Koramangala, Bangalore</p>
+         </div>
+         <div class="flex items-center space-x-2">
+          <div class="flex items-center">
+           <svg class="w-4 h-4 text-gold" fill="currentColor" viewbox="0 0 24 24">
+            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+           </svg><span class="text-sm font-medium text-charcoal ml-1">4.7</span>
+          </div>
+          <svg class="w-5 h-5 text-gray-300 group-hover:text-gold transition-colors" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+          </svg>
+         </div></button>
+       </div>
+      </div>
+     </div><!-- Step 3: Select Date & Time -->
+     <div id="booking-step-3" class="booking-step hidden">
+      <div class="bg-white rounded-3xl p-6 lg:p-8 shadow-lg">
+       <div class="flex items-center justify-between mb-6">
+        <h2 class="font-display text-xl font-bold text-charcoal">Select Date &amp; Time</h2><button onclick="goToStep(2)" class="text-gold hover:text-gold-dark text-sm font-medium">← Back</button>
+       </div><!-- Calendar -->
+       <div class="mb-8">
+        <div class="flex items-center justify-between mb-4"><button onclick="prevMonth()" class="p-2 rounded-lg hover:bg-cream transition-colors">
+          <svg class="w-5 h-5 text-charcoal" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+          </svg></button>
+         <h3 id="calendar-month" class="font-semibold text-charcoal">January 2024</h3><button onclick="nextMonth()" class="p-2 rounded-lg hover:bg-cream transition-colors">
+          <svg class="w-5 h-5 text-charcoal" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+          </svg></button>
+        </div>
+        <div class="grid grid-cols-7 gap-2 text-center mb-2">
+         <div class="text-xs font-medium text-warm-gray py-2">
+          Sun
+         </div>
+         <div class="text-xs font-medium text-warm-gray py-2">
+          Mon
+         </div>
+         <div class="text-xs font-medium text-warm-gray py-2">
+          Tue
+         </div>
+         <div class="text-xs font-medium text-warm-gray py-2">
+          Wed
+         </div>
+         <div class="text-xs font-medium text-warm-gray py-2">
+          Thu
+         </div>
+         <div class="text-xs font-medium text-warm-gray py-2">
+          Fri
+         </div>
+         <div class="text-xs font-medium text-warm-gray py-2">
+          Sat
+         </div>
+        </div>
+        <div id="calendar-days" class="grid grid-cols-7 gap-2"><!-- Days will be generated by JS -->
+        </div>
+       </div><!-- Time Slots -->
+       <div>
+        <h3 class="font-semibold text-charcoal mb-4">Available Time Slots</h3>
+        <div id="time-slots" class="grid grid-cols-3 sm:grid-cols-4 gap-3"><button onclick="selectTime('09:00 AM')" class="time-slot py-3 px-4 text-sm border-2 border-gray-100 rounded-xl hover:border-gold transition-all">09:00 AM</button> <button onclick="selectTime('10:00 AM')" class="time-slot py-3 px-4 text-sm border-2 border-gray-100 rounded-xl hover:border-gold transition-all">10:00 AM</button> <button onclick="selectTime('11:00 AM')" class="time-slot py-3 px-4 text-sm border-2 border-gray-100 rounded-xl hover:border-gold transition-all">11:00 AM</button> <button onclick="selectTime('12:00 PM')" class="time-slot py-3 px-4 text-sm border-2 border-gray-100 rounded-xl hover:border-gold transition-all">12:00 PM</button> <button onclick="selectTime('02:00 PM')" class="time-slot py-3 px-4 text-sm border-2 border-gray-100 rounded-xl hover:border-gold transition-all">02:00 PM</button> <button onclick="selectTime('03:00 PM')" class="time-slot py-3 px-4 text-sm border-2 border-gray-100 rounded-xl hover:border-gold transition-all">03:00 PM</button> <button onclick="selectTime('04:00 PM')" class="time-slot py-3 px-4 text-sm border-2 border-gray-100 rounded-xl hover:border-gold transition-all">04:00 PM</button> <button onclick="selectTime('05:00 PM')" class="time-slot py-3 px-4 text-sm border-2 border-gray-100 rounded-xl hover:border-gold transition-all">05:00 PM</button>
+        </div>
+       </div><button id="date-continue-btn" onclick="goToStep(4)" disabled class="w-full mt-8 py-4 bg-gray-200 text-warm-gray font-semibold rounded-xl transition-all cursor-not-allowed"> Select Date &amp; Time to Continue </button>
+      </div>
+     </div><!-- Step 4: Enter Details -->
+     <div id="booking-step-4" class="booking-step hidden">
+      <div class="bg-white rounded-3xl p-6 lg:p-8 shadow-lg">
+       <div class="flex items-center justify-between mb-6">
+        <h2 class="font-display text-xl font-bold text-charcoal">Your Details</h2><button onclick="goToStep(3)" class="text-gold hover:text-gold-dark text-sm font-medium">← Back</button>
+       </div><!-- Booking Summary -->
+       <div class="bg-cream rounded-2xl p-4 mb-6">
+        <h3 class="text-sm font-medium text-warm-gray mb-3">Booking Summary</h3>
+        <div class="space-y-2">
+         <div class="flex justify-between"><span class="text-charcoal">Service:</span> <span id="summary-service" class="font-semibold text-charcoal">Haircut</span>
+         </div>
+         <div class="flex justify-between"><span class="text-charcoal">Location:</span> <span id="summary-location" class="font-semibold text-charcoal">Bandra West</span>
+         </div>
+         <div class="flex justify-between"><span class="text-charcoal">Date &amp; Time:</span> <span id="summary-datetime" class="font-semibold text-charcoal">Jan 15, 10:00 AM</span>
+         </div>
+        </div>
+       </div>
+       <form id="booking-form" onsubmit="submitBooking(event)">
+        <div class="space-y-4">
+         <div><label for="customer-name" class="block text-sm font-medium text-charcoal mb-2">Full Name</label> <input type="text" id="customer-name" required placeholder="Enter your name" class="w-full px-4 py-3 border border-gray-200 rounded-xl focus:outline-none focus:border-gold focus:ring-2 focus:ring-gold/20">
+         </div>
+         <div><label for="customer-phone" class="block text-sm font-medium text-charcoal mb-2">Phone Number</label>
+          <div class="flex"><span class="inline-flex items-center px-4 border border-r-0 border-gray-200 bg-cream rounded-l-xl text-warm-gray text-sm">+91</span> <input type="tel" id="customer-phone" required placeholder="Enter 10-digit number" pattern="[0-9]{10}" class="w-full px-4 py-3 border border-gray-200 rounded-r-xl focus:outline-none focus:border-gold focus:ring-2 focus:ring-gold/20">
+          </div>
+         </div>
+        </div><!-- Trust Badge -->
+        <div class="flex items-center justify-center space-x-2 mt-6 py-3 bg-green-50 rounded-xl">
+         <svg class="w-5 h-5 text-green-600" fill="currentColor" viewbox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z" />
+         </svg><span class="text-sm font-medium text-green-700">Instant SMS Confirmation</span>
+        </div><button type="submit" class="w-full mt-6 py-4 bg-charcoal text-white font-semibold rounded-xl hover:bg-gold transition-colors flex items-center justify-center space-x-2"> <span>Confirm Booking</span>
+         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+         </svg></button>
+       </form>
+      </div>
+     </div><!-- Booking Success -->
+     <div id="booking-success" class="booking-step hidden">
+      <div class="bg-white rounded-3xl p-8 lg:p-12 shadow-lg text-center">
+       <div class="w-20 h-20 mx-auto mb-6 rounded-full bg-green-100 flex items-center justify-center">
+        <svg class="w-10 h-10 text-green-600" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+        </svg>
+       </div>
+       <h2 class="font-display text-2xl font-bold text-charcoal mb-2">Booking Confirmed!</h2>
+       <p class="text-warm-gray mb-6">You will receive an SMS confirmation shortly.</p>
+       <div class="bg-cream rounded-2xl p-6 mb-8 text-left max-w-sm mx-auto">
+        <div class="space-y-3">
+         <div class="flex justify-between"><span class="text-warm-gray">Booking ID:</span> <span id="booking-id" class="font-semibold text-charcoal">#LX2024001</span>
+         </div>
+         <div class="flex justify-between"><span class="text-warm-gray">Service:</span> <span id="final-service" class="font-semibold text-charcoal">Haircut</span>
+         </div>
+         <div class="flex justify-between"><span class="text-warm-gray">Location:</span> <span id="final-location" class="font-semibold text-charcoal">Bandra West</span>
+         </div>
+         <div class="flex justify-between"><span class="text-warm-gray">Date &amp; Time:</span> <span id="final-datetime" class="font-semibold text-charcoal">Jan 15, 10:00 AM</span>
+         </div>
+        </div>
+       </div>
+       <div class="flex flex-col sm:flex-row gap-4 justify-center"><button onclick="showPage('home')" class="px-8 py-3 bg-charcoal text-white font-medium rounded-full hover:bg-gold transition-colors"> Back to Home </button> <button onclick="resetBooking()" class="px-8 py-3 border-2 border-charcoal text-charcoal font-medium rounded-full hover:border-gold hover:text-gold transition-colors"> Book Another </button>
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
+  </div><!-- ==================== OFFERS PAGE ==================== -->
+  <div id="page-offers" class="page">
+   <div class="min-h-screen pt-20 lg:pt-24 pb-16 bg-cream">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"><!-- Header -->
+     <div class="text-center mb-12 lg:mb-16 pt-8"><span class="inline-block px-4 py-1.5 bg-gold/10 text-gold text-sm font-medium rounded-full mb-4"> Exclusive Deals </span>
+      <h1 class="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-charcoal mb-4">Special Offers &amp; Membership</h1>
+      <p class="text-warm-gray text-lg max-w-2xl mx-auto">Unlock exclusive discounts and premium benefits with our special offers and membership programs.</p>
+     </div><!-- Seasonal Offers -->
+     <div class="mb-16">
+      <h2 class="font-display text-2xl font-bold text-charcoal mb-8 text-center">Current Offers</h2>
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6"><!-- Offer Card 1 -->
+       <div class="bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow">
+        <div class="h-40 bg-gradient-to-br from-gold/20 via-gold-light/20 to-cream flex items-center justify-center relative">
+         <div class="absolute top-4 right-4 px-3 py-1 bg-red-500 text-white text-xs font-bold rounded-full">
+          50% OFF
+         </div>
+         <div class="text-center">
+          <svg class="w-16 h-16 mx-auto text-gold mb-2" fill="currentColor" viewbox="0 0 24 24"><path d="M9.64 7.64c.23-.5.36-1.05.36-1.64 0-2.21-1.79-4-4-4S2 3.79 2 6s1.79 4 4 4c.59 0 1.14-.13 1.64-.36L10 12l-2.36 2.36C7.14 14.13 6.59 14 6 14c-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4c0-.59-.13-1.14-.36-1.64L12 14l7 7h3v-1L9.64 7.64z" />
+          </svg>
+         </div>
+        </div>
+        <div class="p-6">
+         <h3 class="font-display text-xl font-bold text-charcoal mb-2">First Haircut Special</h3>
+         <p class="text-warm-gray text-sm mb-4">Get 50% off on your first haircut at any Luxe Salon location.</p>
+         <div class="flex items-center justify-between">
+          <div><span class="text-gold font-bold text-lg">₹149</span> <span class="text-warm-gray text-sm line-through ml-2">₹299</span>
+          </div><button onclick="selectServiceAndBook('haircut')" class="px-4 py-2 bg-charcoal text-white text-sm font-medium rounded-full hover:bg-gold transition-colors"> Claim Offer </button>
+         </div>
+        </div>
+       </div><!-- Offer Card 2 -->
+       <div class="bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow">
+        <div class="h-40 bg-gradient-to-br from-gold-light/20 via-gold/20 to-cream flex items-center justify-center relative">
+         <div class="absolute top-4 right-4 px-3 py-1 bg-gold text-white text-xs font-bold rounded-full">
+          COMBO
+         </div>
+         <div class="text-center">
+          <svg class="w-16 h-16 mx-auto text-gold mb-2" fill="currentColor" viewbox="0 0 24 24"><path d="M12 3c-4.97 0-9 4.03-9 9v7c0 1.1.9 2 2 2h4v-8H5v-1c0-3.87 3.13-7 7-7s7 3.13 7 7v1h-4v8h4c1.1 0 2-.9 2-2v-7c0-4.97-4.03-9-9-9z" />
+          </svg>
+         </div>
+        </div>
+        <div class="p-6">
+         <h3 class="font-display text-xl font-bold text-charcoal mb-2">Spa + Haircut Combo</h3>
+         <p class="text-warm-gray text-sm mb-4">Relax with our signature hair spa and get a fresh cut.</p>
+         <div class="flex items-center justify-between">
+          <div><span class="text-gold font-bold text-lg">₹899</span> <span class="text-warm-gray text-sm line-through ml-2">₹1299</span>
+          </div><button onclick="selectServiceAndBook('hair-spa')" class="px-4 py-2 bg-charcoal text-white text-sm font-medium rounded-full hover:bg-gold transition-colors"> Claim Offer </button>
+         </div>
+        </div>
+       </div><!-- Offer Card 3 -->
+       <div class="bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow">
+        <div class="h-40 bg-gradient-to-br from-cream via-gold-light/20 to-gold/20 flex items-center justify-center relative">
+         <div class="absolute top-4 right-4 px-3 py-1 bg-green-500 text-white text-xs font-bold rounded-full">
+          LIMITED
+         </div>
+         <div class="text-center">
+          <svg class="w-16 h-16 mx-auto text-gold mb-2" fill="currentColor" viewbox="0 0 24 24"><path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9c.83 0 1.5-.67 1.5-1.5 0-.39-.15-.74-.39-1.01-.23-.26-.38-.61-.38-.99 0-.83.67-1.5 1.5-1.5H16c2.76 0 5-2.24 5-5 0-4.42-4.03-8-9-8z" />
+          </svg>
+         </div>
+        </div>
+        <div class="p-6">
+         <h3 class="font-display text-xl font-bold text-charcoal mb-2">Monsoon Color Fest</h3>
+         <p class="text-warm-gray text-sm mb-4">Premium global hair color with free hair spa treatment.</p>
+         <div class="flex items-center justify-between">
+          <div><span class="text-gold font-bold text-lg">₹1999</span> <span class="text-warm-gray text-sm line-through ml-2">₹2999</span>
+          </div><button onclick="selectServiceAndBook('coloring')" class="px-4 py-2 bg-charcoal text-white text-sm font-medium rounded-full hover:bg-gold transition-colors"> Claim Offer </button>
+         </div>
+        </div>
+       </div>
+      </div>
+     </div><!-- Membership Section -->
+     <div class="mb-16">
+      <div class="text-center mb-10"><span class="inline-block px-4 py-1.5 bg-gold/20 text-gold-dark text-sm font-medium rounded-full mb-4"> ✨ Exclusive </span>
+       <h2 class="font-display text-2xl lg:text-3xl font-bold text-charcoal mb-4">Luxe Membership Program</h2>
+       <p class="text-warm-gray max-w-xl mx-auto">Join our exclusive membership and enjoy premium benefits, priority bookings, and amazing discounts.</p>
+      </div>
+      <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto"><!-- Silver Membership -->
+       <div class="membership-card bg-white rounded-3xl p-8 shadow-lg border-2 border-gray-100 hover:border-gold/50 transition-all">
+        <div class="flex items-center justify-between mb-6">
+         <div>
+          <h3 class="font-display text-xl font-bold text-charcoal">Silver</h3>
+          <p class="text-warm-gray text-sm">Perfect for regulars</p>
+         </div>
+         <div class="w-14 h-14 rounded-full bg-gradient-to-br from-gray-200 to-gray-400 flex items-center justify-center">
+          <svg class="w-7 h-7 text-white" fill="currentColor" viewbox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+          </svg>
+         </div>
+        </div>
+        <div class="mb-6"><span class="text-3xl font-bold text-charcoal">₹999</span> <span class="text-warm-gray">/year</span>
+        </div>
+        <ul class="space-y-3 mb-8">
+         <li class="flex items-center space-x-3">
+          <svg class="w-5 h-5 text-gold flex-shrink-0" fill="currentColor" viewbox="0 0 24 24">
+           <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" />
+          </svg><span class="text-charcoal">10% off on all services</span></li>
+         <li class="flex items-center space-x-3">
+          <svg class="w-5 h-5 text-gold flex-shrink-0" fill="currentColor" viewbox="0 0 24 24">
+           <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" />
+          </svg><span class="text-charcoal">Priority booking access</span></li>
+         <li class="flex items-center space-x-3">
+          <svg class="w-5 h-5 text-gold flex-shrink-0" fill="currentColor" viewbox="0 0 24 24">
+           <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" />
+          </svg><span class="text-charcoal">Birthday special discount</span></li>
+         <li class="flex items-center space-x-3">
+          <svg class="w-5 h-5 text-gold flex-shrink-0" fill="currentColor" viewbox="0 0 24 24">
+           <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" />
+          </svg><span class="text-charcoal">Earn loyalty points</span></li>
+        </ul><button class="w-full py-3 border-2 border-charcoal text-charcoal font-semibold rounded-full hover:bg-charcoal hover:text-white transition-colors"> Join Silver </button>
+       </div><!-- Gold Membership -->
+       <div class="membership-card bg-gradient-to-br from-gold/10 via-gold-light/5 to-white rounded-3xl p-8 shadow-xl border-2 border-gold relative overflow-hidden">
+        <div class="absolute top-4 right-4 px-3 py-1 bg-gold text-white text-xs font-bold rounded-full">
+         POPULAR
+        </div>
+        <div class="flex items-center justify-between mb-6">
+         <div>
+          <h3 class="font-display text-xl font-bold text-charcoal">Gold</h3>
+          <p class="text-warm-gray text-sm">Maximum savings</p>
+         </div>
+         <div class="w-14 h-14 rounded-full bg-gradient-to-br from-gold to-gold-dark flex items-center justify-center">
+          <svg class="w-7 h-7 text-white" fill="currentColor" viewbox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+          </svg>
+         </div>
+        </div>
+        <div class="mb-6"><span class="text-3xl font-bold text-charcoal">₹2499</span> <span class="text-warm-gray">/year</span>
+        </div>
+        <ul class="space-y-3 mb-8">
+         <li class="flex items-center space-x-3">
+          <svg class="w-5 h-5 text-gold flex-shrink-0" fill="currentColor" viewbox="0 0 24 24">
+           <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" />
+          </svg><span class="text-charcoal font-semibold">20% off on all services</span></li>
+         <li class="flex items-center space-x-3">
+          <svg class="w-5 h-5 text-gold flex-shrink-0" fill="currentColor" viewbox="0 0 24 24">
+           <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" />
+          </svg><span class="text-charcoal">VIP priority booking</span></li>
+         <li class="flex items-center space-x-3">
+          <svg class="w-5 h-5 text-gold flex-shrink-0" fill="currentColor" viewbox="0 0 24 24">
+           <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" />
+          </svg><span class="text-charcoal">Free monthly hair spa</span></li>
+         <li class="flex items-center space-x-3">
+          <svg class="w-5 h-5 text-gold flex-shrink-0" fill="currentColor" viewbox="0 0 24 24">
+           <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" />
+          </svg><span class="text-charcoal">2x loyalty points</span></li>
+         <li class="flex items-center space-x-3">
+          <svg class="w-5 h-5 text-gold flex-shrink-0" fill="currentColor" viewbox="0 0 24 24">
+           <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" />
+          </svg><span class="text-charcoal">Exclusive member events</span></li>
+        </ul><button class="w-full py-3 bg-charcoal text-white font-semibold rounded-full hover:bg-gold transition-colors"> Join Gold &amp; Save 20% </button>
+       </div>
+      </div>
+     </div><!-- CTA Banner -->
+     <div class="bg-charcoal rounded-3xl p-8 lg:p-12 text-center">
+      <h2 class="font-display text-2xl lg:text-3xl font-bold text-white mb-4">Ready to Transform Your Look?</h2>
+      <p class="text-white/70 mb-8 max-w-xl mx-auto">Book your appointment today and experience the Luxe difference. Premium services at prices you'll love.</p><button onclick="showPage('booking')" class="px-8 py-4 bg-gold text-charcoal font-semibold rounded-full hover:bg-gold-light transition-colors inline-flex items-center space-x-2"> <span>Book Your Appointment</span>
+       <svg class="w-5 h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+       </svg></button>
+     </div>
+    </div>
+   </div>
+  </div><!-- ==================== QUICK BOOKING MODAL ==================== -->
+  <div id="quick-book-modal" class="fixed inset-0 z-50 hidden bg-black/50 backdrop-blur-sm flex items-end sm:items-center justify-center">
+   <div class="bg-white rounded-t-3xl sm:rounded-3xl w-full sm:max-w-md shadow-2xl">
+    <div class="flex items-center justify-between p-6 border-b border-gray-100">
+     <h2 class="font-display text-xl font-bold text-charcoal">Book in 10 Seconds</h2><button onclick="closeQuickBook()" class="p-2 hover:bg-cream rounded-lg transition-colors">
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+      </svg></button>
+    </div>
+    <form onsubmit="submitQuickBook(event)" class="p-6 space-y-4">
+     <div>
+      <label class="block text-xs font-medium text-warm-gray mb-2">Service</label> <select id="qb-service" required class="w-full px-4 py-3 border border-gray-200 rounded-xl focus:outline-none focus:border-gold focus:ring-2 focus:ring-gold/20 bg-white"> <option value="">Select service...</option> <option value="haircut">Haircut - ₹299</option> <option value="hair-spa">Hair Spa - ₹799</option> <option value="coloring">Hair Color - ₹1499</option> <option value="bridal">Bridal - ₹15,000</option> <option value="grooming">Grooming - ₹499</option> <option value="facial">Facial - ₹699</option> </select>
+     </div>
+     <div>
+      <label class="block text-xs font-medium text-warm-gray mb-2">City/Area</label> <select id="qb-city" required class="w-full px-4 py-3 border border-gray-200 rounded-xl focus:outline-none focus:border-gold focus:ring-2 focus:ring-gold/20 bg-white"> <option value="">Select location...</option> <option value="Mumbai">Mumbai</option> <option value="Delhi">Delhi</option> <option value="Bangalore">Bangalore</option> <option value="Pune">Pune</option> <option value="Chennai">Chennai</option> </select>
+     </div>
+     <div>
+      <label class="block text-xs font-medium text-warm-gray mb-2">Time</label> <select id="qb-time" required class="w-full px-4 py-3 border border-gray-200 rounded-xl focus:outline-none focus:border-gold focus:ring-2 focus:ring-gold/20 bg-white"> <option value="">Select time...</option> <option value="now">Available Now</option> <option value="next">Next Available</option> <option value="tomorrow">Tomorrow</option> </select>
+     </div>
+     <div class="flex gap-2">
+      <input type="tel" id="qb-phone" placeholder="Phone number" required pattern="[0-9]{10}" maxlength="10" class="flex-1 px-4 py-3 border border-gray-200 rounded-xl focus:outline-none focus:border-gold focus:ring-2 focus:ring-gold/20"> <button type="submit" class="px-6 py-3 bg-charcoal text-white font-semibold rounded-xl hover:bg-gold transition-colors">
+       <svg class="w-5 h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+       </svg></button>
+      <div class="px-6 pb-6 text-center">
+       <p class="text-xs text-warm-gray">Or use WhatsApp: <a href="#" class="text-green-600 font-medium hover:underline">Chat Now</a></p>
+      </div>
+     </div>
+    </form>
+   </div><!-- Sticky Mobile Book Button -->
+   <div id="mobile-book-btn" class="fixed bottom-6 left-4 right-4 z-50 sm:hidden"><button onclick="showPage('booking')" class="w-full py-4 bg-charcoal text-white font-semibold rounded-full shadow-2xl hover:bg-gold transition-colors flex items-center justify-center space-x-2">
+     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+     </svg><span>Book Now</span> </button>
+   </div><!-- WhatsApp Floating Button --> <a href="#" class="whatsapp-btn fixed bottom-24 sm:bottom-8 right-4 sm:right-8 z-50 w-14 h-14 bg-green-500 rounded-full flex items-center justify-center shadow-lg hover:bg-green-600 transition-colors">
+    <svg class="w-7 h-7 text-white" fill="currentColor" viewbox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+    </svg></a>
+   <script>
+    // ==================== CONFIG & STATE ====================
+    const defaultConfig = {
+      brand_name: 'Luxe Salon',
+      hero_headline: 'Experience Premium Hair & Beauty Services',
+      hero_subheading: 'Expert stylists. Trusted by millions. 1000+ locations nationwide. Your transformation begins here.',
+      primary_cta: 'Book Appointment',
+      secondary_cta: 'Book in 10 Seconds',
+      first_time_offer: 'Get 20% off on your first booking',
+      urgency_text: 'High demand right now',
+      background_color: '#FAF8F5',
+      surface_color: '#FFFFFF',
+      text_color: '#2D2D2D',
+      primary_action_color: '#2D2D2D',
+      secondary_action_color: '#C9A962'
+    };
+
+    let bookingState = {
+      step: 1,
+      service: null,
+      location: null,
+      date: null,
+      time: null
+    };
+
+    let calendarState = {
+      month: new Date().getMonth(),
+      year: new Date().getFullYear(),
+      selectedDate: null
+    };
+
+    let testimonialSlide = 0;
+
+    // ==================== QUICK BOOKING ====================
+    function showQuickBook() {
+      const modal = document.getElementById('quick-book-modal');
+      if (modal) modal.classList.remove('hidden');
+    }
+
+    function closeQuickBook() {
+      const modal = document.getElementById('quick-book-modal');
+      if (modal) modal.classList.add('hidden');
+    }
+
+    function submitQuickBook(event) {
+      event.preventDefault();
+      const service = document.getElementById('qb-service').value;
+      const city = document.getElementById('qb-city').value;
+      const phone = document.getElementById('qb-phone').value;
+
+      showPage('booking');
+      closeQuickBook();
+      setTimeout(() => selectService(service), 100);
+    }
+
+    // ==================== FIRST-TIME OFFER BANNER ====================
+    function showFTOBanner() {
+      const hasVisited = localStorage.getItem('luxe_visited');
+      if (!hasVisited) {
+        const banner = document.getElementById('first-time-offer');
+        if (banner) {
+          banner.classList.remove('hidden');
+          localStorage.setItem('luxe_visited', 'true');
+        }
+      }
+    }
+
+    function closeFTOBanner() {
+      const banner = document.getElementById('first-time-offer');
+      if (banner) banner.classList.add('hidden');
+    }
+
+    // ==================== ELEMENT SDK ====================
+    if (window.elementSdk) {
+      window.elementSdk.init({
+        defaultConfig,
+        onConfigChange: async (config) => {
+          // Update brand names
+          const navBrand = document.getElementById('nav-brand-name');
+          const footerBrand = document.getElementById('footer-brand-name');
+          if (navBrand) navBrand.textContent = config.brand_name || defaultConfig.brand_name;
+          if (footerBrand) footerBrand.textContent = config.brand_name || defaultConfig.brand_name;
+
+          // Update hero content
+          const heroHeadline = document.getElementById('hero-headline');
+          const heroSubheading = document.getElementById('hero-subheading');
+          const primaryCta = document.getElementById('hero-primary-cta');
+          const quickBookBtn = document.getElementById('quick-book-btn');
+          const offerText = document.getElementById('offer-text');
+
+          if (heroHeadline) {
+            const headline = config.hero_headline || defaultConfig.hero_headline;
+            heroHeadline.innerHTML = headline.replace('Premium', '<span class="text-gold">Premium</span>');
+          }
+          if (heroSubheading) heroSubheading.textContent = config.hero_subheading || defaultConfig.hero_subheading;
+          if (primaryCta) {
+            const btnText = primaryCta.querySelector('span');
+            if (btnText) btnText.textContent = config.primary_cta || defaultConfig.primary_cta;
+          }
+          if (quickBookBtn) {
+            const btnText = quickBookBtn.querySelector('span');
+            if (btnText) btnText.textContent = config.secondary_cta || defaultConfig.secondary_cta;
+          }
+          if (offerText) offerText.textContent = config.first_time_offer || defaultConfig.first_time_offer;
+
+          // Update colors
+          document.documentElement.style.setProperty('--bg-color', config.background_color || defaultConfig.background_color);
+        },
+        mapToCapabilities: (config) => ({
+          recolorables: [
+            {
+              get: () => config.background_color || defaultConfig.background_color,
+              set: (value) => { config.background_color = value; window.elementSdk.setConfig({ background_color: value }); }
+            },
+            {
+              get: () => config.surface_color || defaultConfig.surface_color,
+              set: (value) => { config.surface_color = value; window.elementSdk.setConfig({ surface_color: value }); }
+            },
+            {
+              get: () => config.text_color || defaultConfig.text_color,
+              set: (value) => { config.text_color = value; window.elementSdk.setConfig({ text_color: value }); }
+            },
+            {
+              get: () => config.primary_action_color || defaultConfig.primary_action_color,
+              set: (value) => { config.primary_action_color = value; window.elementSdk.setConfig({ primary_action_color: value }); }
+            },
+            {
+              get: () => config.secondary_action_color || defaultConfig.secondary_action_color,
+              set: (value) => { config.secondary_action_color = value; window.elementSdk.setConfig({ secondary_action_color: value }); }
+            }
+          ],
+          borderables: [],
+          fontEditable: undefined,
+          fontSizeable: undefined
+        }),
+        mapToEditPanelValues: (config) => new Map([
+          ['brand_name', config.brand_name || defaultConfig.brand_name],
+          ['hero_headline', config.hero_headline || defaultConfig.hero_headline],
+          ['hero_subheading', config.hero_subheading || defaultConfig.hero_subheading],
+          ['primary_cta', config.primary_cta || defaultConfig.primary_cta],
+          ['secondary_cta', config.secondary_cta || defaultConfig.secondary_cta],
+          ['first_time_offer', config.first_time_offer || defaultConfig.first_time_offer],
+          ['urgency_text', config.urgency_text || defaultConfig.urgency_text]
+        ])
+      });
+    }
+
+    // ==================== PAGE NAVIGATION ====================
+    function showPage(pageId) {
+      document.querySelectorAll('.page').forEach(page => page.classList.remove('active'));
+      const targetPage = document.getElementById('page-' + pageId);
+      if (targetPage) {
+        targetPage.classList.add('active');
+        window.scrollTo(0, 0);
+      }
+
+      // Update mobile book button visibility
+      const mobileBtn = document.getElementById('mobile-book-btn');
+      if (mobileBtn) {
+        mobileBtn.style.display = pageId === 'booking' ? 'none' : 'block';
+      }
+
+      // Close mobile menu if open
+      const mobileMenu = document.getElementById('mobile-menu');
+      if (mobileMenu && !mobileMenu.classList.contains('hidden')) {
+        mobileMenu.classList.add('hidden');
+      }
+    }
+
+    function toggleMobileMenu() {
+      const menu = document.getElementById('mobile-menu');
+      if (menu) menu.classList.toggle('hidden');
+    }
+
+    function scrollToSection(sectionId) {
+      showPage('home');
+      setTimeout(() => {
+        const section = document.getElementById(sectionId);
+        if (section) {
+          section.scrollIntoView({ behavior: 'smooth' });
+        }
+      }, 100);
+    }
+
+    // ==================== BOOKING FLOW ====================
+    function goToStep(step) {
+      document.querySelectorAll('.booking-step').forEach(s => s.classList.add('hidden'));
+      const targetStep = document.getElementById('booking-step-' + step);
+      if (targetStep) targetStep.classList.remove('hidden');
+
+      bookingState.step = step;
+      updateProgressIndicators();
+    }
+
+    function updateProgressIndicators() {
+      for (let i = 1; i <= 4; i++) {
+        const indicator = document.getElementById('step-' + i + '-indicator');
+        const progress = document.getElementById('progress-' + (i - 1));
+
+        if (indicator) {
+          if (i <= bookingState.step) {
+            indicator.classList.remove('bg-gray-200', 'text-warm-gray');
+            indicator.classList.add('bg-gold', 'text-white');
+          } else {
+            indicator.classList.remove('bg-gold', 'text-white');
+            indicator.classList.add('bg-gray-200', 'text-warm-gray');
+          }
+        }
+
+        if (progress && i <= bookingState.step) {
+          progress.style.width = '100%';
+        } else if (progress) {
+          progress.style.width = '0';
+        }
+      }
+    }
+
+    function selectService(service) {
+      bookingState.service = service;
+      
+      // Update UI
+      document.querySelectorAll('.service-option').forEach(opt => {
+        opt.classList.remove('border-gold', 'bg-gold/5');
+        if (opt.dataset.service === service) {
+          opt.classList.add('border-gold', 'bg-gold/5');
+        }
+      });
+
+      setTimeout(() => goToStep(2), 300);
+    }
+
+    function selectServiceAndBook(service) {
+      showPage('booking');
+      setTimeout(() => selectService(service), 100);
+    }
+
+    function selectLocation(location) {
+      bookingState.location = location;
+      
+      document.querySelectorAll('.location-option').forEach(opt => {
+        opt.classList.remove('border-gold', 'bg-gold/5');
+      });
+      event.currentTarget.classList.add('border-gold', 'bg-gold/5');
+
+      setTimeout(() => {
+        goToStep(3);
+        renderCalendar();
+      }, 300);
+    }
+
+    function selectTime(time) {
+      bookingState.time = time;
+      
+      document.querySelectorAll('.time-slot').forEach(slot => {
+        slot.classList.remove('selected');
+        if (slot.textContent.trim() === time) {
+          slot.classList.add('selected');
+        }
+      });
+
+      updateDateContinueButton();
+    }
+
+    function updateDateContinueButton() {
+      const btn = document.getElementById('date-continue-btn');
+      if (btn) {
+        if (bookingState.date && bookingState.time) {
+          btn.disabled = false;
+          btn.classList.remove('bg-gray-200', 'text-warm-gray', 'cursor-not-allowed');
+          btn.classList.add('bg-charcoal', 'text-white', 'hover:bg-gold');
+          btn.textContent = 'Continue';
+        } else {
+          btn.disabled = true;
+          btn.classList.remove('bg-charcoal', 'text-white', 'hover:bg-gold');
+          btn.classList.add('bg-gray-200', 'text-warm-gray', 'cursor-not-allowed');
+          btn.textContent = 'Select Date & Time to Continue';
+        }
+      }
+    }
+
+    // ==================== CALENDAR ====================
+    function renderCalendar() {
+      const monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+      const monthEl = document.getElementById('calendar-month');
+      const daysEl = document.getElementById('calendar-days');
+
+      if (monthEl) {
+        monthEl.textContent = monthNames[calendarState.month] + ' ' + calendarState.year;
+      }
+
+      if (daysEl) {
+        daysEl.innerHTML = '';
+        
+        const firstDay = new Date(calendarState.year, calendarState.month, 1).getDay();
+        const daysInMonth = new Date(calendarState.year, calendarState.month + 1, 0).getDate();
+        const today = new Date();
+
+        // Empty cells for days before first day
+        for (let i = 0; i < firstDay; i++) {
+          const emptyCell = document.createElement('div');
+          daysEl.appendChild(emptyCell);
+        }
+
+        // Day cells
+        for (let day = 1; day <= daysInMonth; day++) {
+          const dayCell = document.createElement('button');
+          dayCell.textContent = day;
+          dayCell.className = 'calendar-day py-3 rounded-lg text-center text-sm font-medium';
+
+          const cellDate = new Date(calendarState.year, calendarState.month, day);
+          const isPast = cellDate < today && cellDate.toDateString() !== today.toDateString();
+
+          if (isPast) {
+            dayCell.classList.add('disabled', 'text-gray-300');
+          } else {
+            dayCell.classList.add('text-charcoal', 'hover:bg-gold', 'hover:text-white', 'cursor-pointer');
+            dayCell.onclick = () => selectDate(day);
+          }
+
+          if (calendarState.selectedDate === day) {
+            dayCell.classList.add('selected', 'bg-gold', 'text-white');
+          }
+
+          daysEl.appendChild(dayCell);
+        }
+      }
+    }
+
+    function selectDate(day) {
+      calendarState.selectedDate = day;
+      bookingState.date = new Date(calendarState.year, calendarState.month, day);
+      renderCalendar();
+      updateDateContinueButton();
+    }
+
+    function prevMonth() {
+      if (calendarState.month === 0) {
+        calendarState.month = 11;
+        calendarState.year--;
+      } else {
+        calendarState.month--;
+      }
+      calendarState.selectedDate = null;
+      renderCalendar();
+    }
+
+    function nextMonth() {
+      if (calendarState.month === 11) {
+        calendarState.month = 0;
+        calendarState.year++;
+      } else {
+        calendarState.month++;
+      }
+      calendarState.selectedDate = null;
+      renderCalendar();
+    }
+
+    // ==================== FORM SUBMISSION ====================
+    function submitBooking(event) {
+      event.preventDefault();
+
+      const name = document.getElementById('customer-name').value;
+      const phone = document.getElementById('customer-phone').value;
+
+      if (!name || !phone) return;
+
+      // Update summary
+      const serviceNames = {
+        'haircut': 'Haircut',
+        'hair-spa': 'Hair Spa',
+        'coloring': 'Hair Color',
+        'bridal': 'Bridal Package',
+        'grooming': 'Grooming',
+        'facial': 'Facial'
+      };
+
+      const monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+      const dateStr = monthNames[bookingState.date.getMonth()] + ' ' + bookingState.date.getDate() + ', ' + bookingState.time;
+
+      document.getElementById('summary-service').textContent = serviceNames[bookingState.service] || bookingState.service;
+      document.getElementById('summary-location').textContent = bookingState.location;
+      document.getElementById('summary-datetime').textContent = dateStr;
+
+      document.getElementById('final-service').textContent = serviceNames[bookingState.service] || bookingState.service;
+      document.getElementById('final-location').textContent = bookingState.location;
+      document.getElementById('final-datetime').textContent = dateStr;
+      document.getElementById('booking-id').textContent = '#LX' + Date.now().toString().slice(-7);
+
+      // Show success
+      document.querySelectorAll('.booking-step').forEach(s => s.classList.add('hidden'));
+      document.getElementById('booking-success').classList.remove('hidden');
+    }
+
+    function resetBooking() {
+      bookingState = { step: 1, service: null, location: null, date: null, time: null };
+      calendarState.selectedDate = null;
+
+      document.querySelectorAll('.service-option').forEach(opt => {
+        opt.classList.remove('border-gold', 'bg-gold/5');
+      });
+      document.querySelectorAll('.location-option').forEach(opt => {
+        opt.classList.remove('border-gold', 'bg-gold/5');
+      });
+      document.querySelectorAll('.time-slot').forEach(slot => {
+        slot.classList.remove('selected');
+      });
+
+      document.getElementById('customer-name').value = '';
+      document.getElementById('customer-phone').value = '';
+
+      goToStep(1);
+      updateProgressIndicators();
+    }
+
+    // ==================== TESTIMONIALS ====================
+    function setTestimonialSlide(index) {
+      testimonialSlide = index;
+      const track = document.getElementById('testimonial-track');
+      const dots = document.querySelectorAll('.testimonial-dot');
+
+      if (track) {
+        const width = window.innerWidth;
+        let slideWidth = 100;
+        if (width >= 1024) slideWidth = 33.333;
+        else if (width >= 768) slideWidth = 50;
+
+        track.style.transform = 'translateX(-' + (index * slideWidth) + '%)';
+      }
+
+      dots.forEach((dot, i) => {
+        dot.classList.toggle('bg-gold', i === index);
+        dot.classList.toggle('bg-gold/30', i !== index);
+      });
+    }
+
+    // ==================== LOCATION SEARCH ====================
+    function setLocation(city) {
+      const input = document.getElementById('location-search');
+      if (input) input.value = city;
+    }
+
+    function searchLocations() {
+      const input = document.getElementById('location-search');
+      if (input && input.value) {
+        showPage('booking');
+        setTimeout(() => {
+          goToStep(2);
+          const bookingInput = document.getElementById('booking-location-search');
+          if (bookingInput) bookingInput.value = input.value;
+        }, 100);
+      }
+    }
+
+    // ==================== INITIALIZATION ====================
+    document.addEventListener('DOMContentLoaded', () => {
+      updateProgressIndicators();
+      showFTOBanner();
+
+      // Auto-rotate testimonials
+      setInterval(() => {
+        testimonialSlide = (testimonialSlide + 1) % 3;
+        setTestimonialSlide(testimonialSlide);
+      }, 5000);
+    });
+  </script>
+  </div>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9d4c7832f6df3cb8',t:'MTc3MjI0NTUwNy4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
